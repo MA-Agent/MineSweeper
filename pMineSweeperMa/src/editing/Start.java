@@ -23,10 +23,7 @@ public class Start {
 			difCorrect = true;
 		}
 		}while(!difCorrect);
-
-
-
-			
+		
 
 		Tableau grille = new Tableau(difficulty);
 		
