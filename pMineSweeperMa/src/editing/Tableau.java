@@ -2,6 +2,7 @@ package editing;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class Tableau{
 
@@ -10,6 +11,9 @@ public class Tableau{
 	private int ligne;
 	private int colonne;
 	private int nbBomb;
+	
+	Random rand = new Random();
+	boolean[][] jeu;
 	
 	public Tableau(int difficulty){
 		matrice = new ArrayList<>();
@@ -48,6 +52,50 @@ public class Tableau{
 			}
 		}
 		return s;
+	}
+	
+	
+	public void Build()
+	{
+		jeu = new boolean[colonne][ligne];
+		
+		// Initialisation du tableau à false
+		for(int i = 0; i < colonne; i++)
+		{
+			for(int y = 0; y < ligne; y++)
+			{
+				jeu[i][y] = false;
+			}
+		}
+		
+		// Remplissage de cases random avec des bombes (true)
+		for(int i = 0; i < nbBomb; i++)
+		{
+			int randC = rand.nextInt(colonne);
+			int randL = rand.nextInt(ligne);
+			
+			if(jeu[colonne][ligne] == false)
+			{
+				jeu[colonne][ligne] = true;
+			}
+			else
+			{
+				i--;
+			}
+		}
+		
+	}
+	
+	public void Afficher()
+	{
+		for(int i = 0; i < colonne; i++)
+		{
+			for(int y = 0; y < ligne; y++)
+			{
+				System.out.println(jeu[i][y]);
+			}
+			System.out.println("\n");
+		}
 	}
 }
 
