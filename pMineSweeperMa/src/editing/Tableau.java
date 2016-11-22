@@ -7,7 +7,6 @@ import java.util.Random;
 public class Tableau{
 
 
-	private List<List<Integer>> matrice;
 	private int ligne;
 	private int colonne;
 	private int nbBomb;
@@ -16,7 +15,6 @@ public class Tableau{
 	boolean[][] jeu;
 	
 	public Tableau(int difficulty){
-		matrice = new ArrayList<>();
 		
 		if(difficulty == 1){
 			this.ligne= 9;
@@ -33,25 +31,6 @@ public class Tableau{
 			this.nbBomb = 99;
 		}
 		
-		for(int i =0 ; i< ligne; i++){
-			for(int j = 0 ; j< colonne; j++){
-				   
-			}
-		}
-		
-	}
-	
-	public String toString(){
-		String s = "";
-		for(int i = 0 ; i < matrice.size() ; i++){
-			s += "| ";
-			for(int j = 0 ; j < matrice.get(i).size() ; j++){
-				s += String.format(" %5.2f ", matrice.get(i).get(j));
-				if(j == matrice.get(i).size() - 1 )
-					s += " |\n";
-			}
-		}
-		return s;
 	}
 	
 	
@@ -74,18 +53,19 @@ public class Tableau{
 			int randC = rand.nextInt(colonne);
 			int randL = rand.nextInt(ligne);
 			
-			if(jeu[colonne][ligne] == false)
+			if(jeu[randC][randL] == false)
 			{
-				jeu[colonne][ligne] = true;
+				jeu[randC][randL] = true;
 			}
 			else
 			{
 				i--;
 			}
-		}
+	}
 		
 	}
 	
+	// Affiche la grille de jeu
 	public void Afficher()
 	{
 		for(int i = 0; i < colonne; i++)
