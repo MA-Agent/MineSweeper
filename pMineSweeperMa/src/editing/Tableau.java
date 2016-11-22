@@ -68,15 +68,23 @@ public class Tableau{
 	// Affiche la grille de jeu
 	public void Afficher()
 	{
-		for(int i = 0; i < colonne; i++)
+		for(int i = 0; i < ligne; i++)
 		{
-			for(int y = 0; y < ligne; y++)
+			for(int y = 0; y < colonne; y++)
 			{
-				System.out.println(jeu[i][y]);
+				System.out.print(jeu[i][y]+" ");
+				if(jeu[i][y]==true){
+					System.out.print(" ");
+				}
+				
 			}
-			System.out.println("\n");
+			System.out.println();
+			
+			
 		}
 	}
+	
+	
 }
 
 
