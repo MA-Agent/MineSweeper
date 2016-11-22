@@ -27,6 +27,11 @@ public class Tableau {
 			this.nbBomb = 99;
 		}
 		
+		for(int i =0 ; i< ligne; i++){
+			for(int j = 0 ; j< colonne; j++){
+				  matrice.get(i).add(0) ;
+			}
+		}
 		
 	}
 
