@@ -3,7 +3,9 @@ package editing;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Tableau {
+public class Tableau{
+
+
 	private List<List<Integer>> matrice;
 	private int ligne;
 	private int colonne;
@@ -29,10 +31,24 @@ public class Tableau {
 		
 		for(int i =0 ; i< ligne; i++){
 			for(int j = 0 ; j< colonne; j++){
-				  matrice.get(i).add(0) ;
+				   
 			}
 		}
 		
 	}
-
+	
+	public String toString(){
+		String s = "";
+		for(int i = 0 ; i < matrice.size() ; i++){
+			s += "| ";
+			for(int j = 0 ; j < matrice.get(i).size() ; j++){
+				s += String.format(" %5.2f ", matrice.get(i).get(j));
+				if(j == matrice.get(i).size() - 1 )
+					s += " |\n";
+			}
+		}
+		return s;
+	}
 }
+
+
