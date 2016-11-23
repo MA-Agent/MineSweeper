@@ -37,7 +37,7 @@ public class Tableau{
 	
 	public void Build()
 	{
-		jeu = new int [colonne][ligne];
+		jeu = new int [ligne][colonne];
 		
 		// Initialisation du tableau à 0 (no bombe)
 		for(int i = 0; i < colonne; i++)
