@@ -2,7 +2,9 @@ package editing;
 
 import java.awt.Color;
 
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class Window extends JFrame {
@@ -23,8 +25,9 @@ public class Window extends JFrame {
 		pane.setBackground(Color.BLUE);
 		
 		this.setContentPane(pane);
+		this.add(new JLabel(new ImageIcon("bomb.png")));
 		this.setVisible(true);
-		int n = 8;
+
 		
 	}
 }
