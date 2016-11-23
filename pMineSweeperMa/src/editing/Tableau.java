@@ -54,9 +54,9 @@ public class Tableau{
 			int randC = rand.nextInt(colonne);
 			int randL = rand.nextInt(ligne);
 			
-			if(jeu[randC][randL] == 0)
+			if(jeu[randL][randC] == 0)
 			{
-				jeu[randC][randL] = -1;
+				jeu[randL][randC] = -1;
 			}
 			else
 			{
