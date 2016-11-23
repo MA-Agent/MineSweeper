@@ -40,9 +40,9 @@ public class Tableau{
 		jeu = new int [ligne][colonne];
 		
 		// Initialisation du tableau à 0 (no bombe)
-		for(int i = 0; i < colonne; i++)
+		for(int i = 0; i < ligne; i++)
 		{
-			for(int y = 0; y < ligne; y++)
+			for(int y = 0; y < colonne; y++)
 			{
 				jeu[i][y] = 0;
 			}
