@@ -9,7 +9,7 @@ public class Start {
 	public static void main(String[] args) {
 
 		Scanner scan = new Scanner(System.in);
-		Window fenetre = new Window();
+		//Window fenetre = new Window();
 		
 		int difficulty = scan.nextInt();
 		boolean difCorrect = true;
