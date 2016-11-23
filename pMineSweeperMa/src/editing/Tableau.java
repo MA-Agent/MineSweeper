@@ -107,9 +107,46 @@ public class Tableau{
 				}
 			}
 		}
+		
 	}
 	
-	
+	public void nbBombesAdjacantsMoustache()
+	{
+		for(int i = 0; i < ligne; i++)
+		{
+			
+			for(int j = 0; j < colonne ; j++)
+			{
+
+					int bombes = 0;
+					if(jeu[i][j] != -1)
+					{
+						if(i-1 >= 0 && j-1 >= 0 && jeu[i-1][j-1] == -1)
+							bombes++;
+						if(j-1 >= 0 && jeu[i][j-1] == -1)
+							bombes++;
+						if(i+1 < ligne && j-1 >= 0 && jeu[i+1][j-1] == -1)
+							bombes++;
+						if(i-1 >= 0 && jeu[i-1][j] == -1)
+							bombes++;
+						if(i+1 < ligne && jeu[i+1][j] == -1)
+							bombes++;
+						if(i-1 >= 0 && j+1 < colonne && jeu[i-1][j+1] == -1)
+							bombes++;
+						if(j+1 < colonne && jeu[i][j+1] == -1)
+							bombes++;
+						if(i+1 < ligne && j+1 < colonne && jeu[i+1][j+1] == -1)
+							bombes++;
+						jeu[i][j] = bombes;
+					}
+					
+			}
+
+		}
+	}
 }
+	
+	
+
 
 
