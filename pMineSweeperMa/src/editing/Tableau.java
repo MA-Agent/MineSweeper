@@ -87,27 +87,41 @@ public class Tableau{
 	}
 	
 	public void nbBombesAdjacants(){
-		for(int i = 0 ; i < ligne ; i++){
-			for( int j = 0; j < colonne ; j++){
-				
-				if(i>0 && i < ligne-1 && j >0 && j< colonne-1){
-//					
-					if(jeu[i][j] == -1){
-						jeu[i-1][j]++; 
-						jeu[i+1][j]++;
-						jeu[i][j-1]++  ;
-						jeu[i][j+1]++ ;
-						jeu[i-1][j-1] ++;
-						jeu[i-1][j+1] ++ ;
-						jeu[i+1][j-1] ++;
-						jeu[i+1][j+1] ++;
-					}
-					
-					
-				}
-			}
-		}
-	}
+		for(int i = 0; i < ligne; i++)
+        {
+            
+            for(int j = 0; j < colonne ; j++)
+            {
+
+                    int bombes = 0;
+                    if(jeu[i][j] != -1)
+                    {
+                        if(i-1 > 0 && j-1 < colonne-1 && jeu[i-1][j-1] == -1)
+                            bombes++;
+                        if(j-1 > 0 && jeu[i][j-1] == -1)
+                            bombes++;
+                        if(i+1 < ligne && j-1 >= 0 && jeu[i+1][j-1] == -1)
+                            bombes++;
+                        if(i-1 > 0 && jeu[i-1][j] == -1)
+                            bombes++;
+                        if(i+1 < ligne && jeu[i+1][j] == -1)
+                            bombes++;
+                        if(i-1 > 0 && j+1 < colonne && jeu[i-1][j+1] == -1)
+                            bombes++;
+                        if(j+1 < colonne && jeu[i][j+1] == -1)
+                            bombes++;
+                        if(i+1 < ligne && j+1 < colonne && jeu[i+1][j+1] == -1)
+                            bombes++;
+                        jeu[i][j] = bombes;
+                    }
+                    
+            }
+
+        }
+    }
+
+	
+	
 	
 	
 }
