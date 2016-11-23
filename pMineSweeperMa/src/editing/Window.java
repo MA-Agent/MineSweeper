@@ -19,6 +19,7 @@ public class Window extends JFrame {
 		// JPanel
 		JPanel pane = new JPanel();
 		
+		// Attribut du JPanel
 		pane.setBackground(Color.BLUE);
 		
 		this.setContentPane(pane);
