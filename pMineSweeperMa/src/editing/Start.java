@@ -35,7 +35,7 @@ public class Start {
 		
 
 		System.out.println();
-		grille.nbBombesAdjacants();
+		grille.nbBombesAdjacantsMoustache();
 		System.out.println(grille.toString());
 
 
