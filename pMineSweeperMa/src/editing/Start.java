@@ -31,9 +31,16 @@ public class Start {
 
 		Tableau grille = new Tableau(difficulty);
 		grille.Build();
-		grille.Afficher();
+		System.out.println(grille.toString());
 		
+
+		System.out.println();
+		grille.nbBombesAdjacants();
+		System.out.println(grille.toString());
+
+
 		
+
 
 		
 	}

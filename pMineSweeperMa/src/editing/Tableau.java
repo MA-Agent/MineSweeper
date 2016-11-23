@@ -5,14 +5,15 @@ import java.util.List;
 import java.util.Random;
 
 public class Tableau{
-
+	// changement tab en double
+	
 
 	private int ligne;
 	private int colonne;
 	private int nbBomb;
 	
 	Random rand = new Random();
-	boolean[][] jeu;
+	int [][] jeu;
 	
 	public Tableau(int difficulty){
 		
@@ -36,26 +37,26 @@ public class Tableau{
 	
 	public void Build()
 	{
-		jeu = new boolean[colonne][ligne];
+		jeu = new int [colonne][ligne];
 		
-		// Initialisation du tableau à false
+		// Initialisation du tableau à 0 (no bombe)
 		for(int i = 0; i < colonne; i++)
 		{
 			for(int y = 0; y < ligne; y++)
 			{
-				jeu[i][y] = false;
+				jeu[i][y] = 0;
 			}
 		}
 		
-		// Remplissage de cases random avec des bombes (true)
+		// Remplissage de cases random avec des bombes (-1)
 		for(int i = 0; i < nbBomb; i++)
 		{
 			int randC = rand.nextInt(colonne);
 			int randL = rand.nextInt(ligne);
 			
-			if(jeu[randC][randL] == false)
+			if(jeu[randC][randL] == 0)
 			{
-				jeu[randC][randL] = true;
+				jeu[randC][randL] = -1;
 			}
 			else
 			{
@@ -66,21 +67,45 @@ public class Tableau{
 	}
 	
 	// Affiche la grille de jeu
-	public void Afficher()
+	public String toString()
 	{
+		String s ="";
 		for(int i = 0; i < ligne; i++)
 		{
+			s+="|";
 			for(int y = 0; y < colonne; y++)
 			{
-				System.out.print(jeu[i][y]+" ");
-				if(jeu[i][y]==true){
-					System.out.print(" ");
-				}
 				
+				s+= String.format("%7d", jeu[i][y]);
+				s+="|";
+				if(y == colonne-1){
+					s+= "\n";
+				}
 			}
-			System.out.println();
-			
-			
+		}
+		return s;
+	}
+	
+	public void nbBombesAdjacants(){
+		for(int i = 0 ; i < ligne ; i++){
+			for( int j = 0; j < colonne ; j++){
+				
+				if(i>0 && i < ligne-1 && j >0 && j< colonne-1){
+//					
+					if(jeu[i][j] == -1){
+						jeu[i-1][j]++; 
+						jeu[i+1][j]++;
+						jeu[i][j-1]++  ;
+						jeu[i][j+1]++ ;
+						jeu[i-1][j-1] ++;
+						jeu[i-1][j+1] ++ ;
+						jeu[i+1][j-1] ++;
+						jeu[i+1][j+1] ++;
+					}
+					
+					
+				}
+			}
 		}
 	}
 	
