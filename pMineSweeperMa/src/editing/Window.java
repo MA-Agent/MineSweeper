@@ -19,7 +19,7 @@ public class Window extends JFrame {
 	{
 		// JFrame
 		this.setTitle("Démineur");
-		this.setSize(288, 288);
+		this.setSize(400, 400);
 		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setResizable(false);
@@ -32,8 +32,8 @@ public class Window extends JFrame {
 	    
 	    // Icone
 	    ImageIcon icone = new ImageIcon("D:\\Users\\MIKE-COMPUTER\\git\\MineSweeper\\pMineSweeperMa\\src\\editing\\case.png");
-	    List liste = new ArrayList();
 	    
+	    ArrayList<ArrayList<JButton>> liste = new ArrayList<ArrayList<JButton>>();
 	    
 		// JButton
 		JButton bouton = new JButton("", icone);
@@ -42,18 +42,15 @@ public class Window extends JFrame {
 		
 		for(int i = 0; i < 9; i++)
 		{
-				liste.add(new JButton("", icone));
-				((Component) liste.get(i)).setBounds(32*i, 0, 32, 32);
-				pane.add((Component) liste.get(i));
-		}	
-			
-		//bouton.setBounds(0, 0, 32, 32);
-	    //pane.add(bouton);
-	    //bouton2.setBounds(0, 32, 32, 32);
-	    //pane.add(bouton2);
-	    
-	    
-	    
+			liste.add(new ArrayList<JButton>());
+			for(int j = 0; j < 9; j++)
+			{
+				
+				liste.get(i).add(new JButton("", icone));
+				((Component) liste.get(i).get(j)).setBounds(32*i, 32*j, 32, 32);
+				pane.add((Component) liste.get(i).get(j));
+			}
+		}	   
 	    
 	    this.setContentPane(pane);
 	    this.setVisible(true);
@@ -65,6 +62,5 @@ public class Window extends JFrame {
 	    	{
 	    		
 	    	}
-	    });
-*/	}
+	    });*/	}
 }
