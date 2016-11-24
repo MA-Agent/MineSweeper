@@ -5,6 +5,7 @@ import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
@@ -31,7 +32,8 @@ public class Window extends JFrame {
 	    
 	    // Icone
 	    ImageIcon icone = new ImageIcon("D:\\Users\\MIKE-COMPUTER\\git\\MineSweeper\\pMineSweeperMa\\src\\editing\\case.png");
-	    ArrayList liste = new ArrayList();
+	    List liste = new ArrayList();
+	    
 	    
 		// JButton
 		JButton bouton = new JButton("", icone);
