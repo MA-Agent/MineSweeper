@@ -93,7 +93,7 @@ public class Tableau{
 	
 
 	
-	public void nbBombesAdjacantsMoustache()
+	public void nbBombesAdjacants()
 	{
 		for(int i = 0; i < ligne; i++)
 		{
