@@ -31,7 +31,7 @@ public class Window extends JFrame {
 		this.setContentPane(pane);
 	    
 	    // Icone
-	    ImageIcon icone = new ImageIcon("D:\\Users\\MIKE-COMPUTER\\git\\MineSweeper\\pMineSweeperMa\\src\\editing\\case.png");
+	    ImageIcon icone = new ImageIcon("src/editing/case.png");
 	    
 	    ArrayList<ArrayList<JButton>> liste = new ArrayList<ArrayList<JButton>>();
 	    
