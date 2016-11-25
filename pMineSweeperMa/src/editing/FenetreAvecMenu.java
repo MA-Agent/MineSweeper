@@ -15,7 +15,6 @@ public class FenetreAvecMenu extends JFrame
 	private JMenuBar menuAide = new JMenuBar();
 	
 	//Nom des onglets
-	private JMenuItem item1 = new JMenuItem ("Ouvrir");
 	private JMenuItem item2 = new JMenuItem ("Fermer");
 	private JMenuItem item3 = new JMenuItem ("Facile");
 	private JMenuItem item4 = new JMenuItem ("Normal");
@@ -69,7 +68,6 @@ public class FenetreAvecMenu extends JFrame
 		});
 		
 		// Affichage des menus
-		menuFichier.add(item1);
 		menuFichier.add(item2);
 		menuDifficulté.add(item3);
 		menuDifficulté.add(item4);
