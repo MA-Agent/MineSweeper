@@ -7,7 +7,6 @@ import java.util.Random;
 public class Tableau{
 	// changement tab en double
 	
-
 	private int ligne;
 	private int colonne;
 	private int nbBomb;

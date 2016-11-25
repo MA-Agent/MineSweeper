@@ -10,6 +10,8 @@ public class Start {
 
 		Scanner scan = new Scanner(System.in);
 		
+		FenetreAvecMenu menu = new FenetreAvecMenu();
+		
 		int difficulty = scan.nextInt();
 		boolean difCorrect = true;
 		
