@@ -9,7 +9,6 @@ public class Start {
 	public static void main(String[] args) {
 
 		Scanner scan = new Scanner(System.in);
-		Window fenetre = new Window();
 		
 		int difficulty = scan.nextInt();
 		boolean difCorrect = true;
@@ -37,6 +36,8 @@ public class Start {
 		System.out.println();
 		grille.nbBombesAdjacants();
 		System.out.println(grille.toString());
+		
+		Window fenetre = new Window(grille.getLigne(), grille.getColonne());
 
 
 		

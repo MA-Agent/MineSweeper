@@ -27,8 +27,8 @@ public class Tableau{
 			this.nbBomb = 40;
 			
 		}else if(difficulty == 3 ){
-			this.ligne = 16;
-			this.colonne = 30;
+			this.ligne = 30;
+			this.colonne = 16;
 			this.nbBomb = 99;
 		}
 		
@@ -89,7 +89,15 @@ public class Tableau{
 	
 		
 		
-		
+	public int getColonne()
+	{
+		return colonne;
+	}
+	
+	public int getLigne()
+	{
+		return ligne;
+	}
 	
 
 	

@@ -16,7 +16,7 @@ import javax.swing.JPanel;
 
 public class Window extends JFrame {
 
-	public Window()
+	public Window(int ligne, int colonne)
 	{
 		// JFrame
 		this.setTitle("Démineur");
@@ -27,7 +27,7 @@ public class Window extends JFrame {
 		//
 		// JPanel
 		JPanel pane = new JPanel();
-		pane.setPreferredSize(new Dimension(288,288));
+		pane.setPreferredSize(new Dimension(ligne*32, colonne*32));
 		pane.setLayout(null);
 		pane.setBackground(Color.BLUE);
 		this.setContentPane(pane);
@@ -39,10 +39,10 @@ public class Window extends JFrame {
 	    
 		// JButton
 	
-		for(int i = 0; i < 9; i++)
+		for(int i = 0; i < ligne; i++)
 		{
 			liste.add(new ArrayList<JButton>());
-			for(int j = 0; j < 9; j++)
+			for(int j = 0; j < colonne; j++)
 			{
 				
 				liste.get(i).add(new JButton("", textureBloc));
