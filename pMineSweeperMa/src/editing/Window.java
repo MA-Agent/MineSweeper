@@ -3,12 +3,7 @@ package editing;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import java.util.List;
-
-import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -35,10 +30,10 @@ public class Window extends JFrame {
 	    // Icone
 	    ImageIcon textureBloc = new ImageIcon("src/editing/case.png");
 	    
+	    // Liste de liste boutons
 	    ArrayList<ArrayList<JButton>> liste = new ArrayList<ArrayList<JButton>>();
 	    
-		// JButton
-	
+		// Ajout d'autant de bouton qu'il faut de ligne et de colonne sous forme de liste de liste.
 		for(int i = 0; i < ligne; i++)
 		{
 			liste.add(new ArrayList<JButton>());
@@ -51,6 +46,7 @@ public class Window extends JFrame {
 			}
 		}	   
 	    
+		// Ajout du JPanel dans la JFrame
 	    this.setContentPane(pane);
 	    this.pack();
 	    this.setVisible(true);

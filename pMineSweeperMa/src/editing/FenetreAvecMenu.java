@@ -2,11 +2,9 @@ package editing;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.JFrame;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
-import javax.swing.JTextArea;
 
 public class FenetreAvecMenu extends JFrame
 {
@@ -26,12 +24,12 @@ public class FenetreAvecMenu extends JFrame
 	
 	public FenetreAvecMenu ()
 	{
-		setSize(800,500);// taille de la fenêtre
+		setSize(800,500);
 		setTitle("Démineur");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//Permet de fermer la fenêtre avec la croix
-		setLocationRelativeTo(null);//Centre la fenêtre au millieu
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setLocationRelativeTo(null);
 		
-		menuFichier.add(item1);
+		// Bouton "ouvrir"
 		item2.addActionListener(new ActionListener()
 				{
 					public void actionPerformed(ActionEvent e)
@@ -40,6 +38,38 @@ public class FenetreAvecMenu extends JFrame
 					}
 				});
 		
+		// Bouton "Facile"
+		item3.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent e)
+			{
+				Game jeu = new Game(1);
+				dispose();
+			}
+		});
+		
+		// Bouton "Normal"
+		item4.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent e)
+			{
+				Game jeu = new Game(2);
+				dispose();
+			}
+		});
+		
+		// Bouton "Difficile"
+		item5.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent e)
+			{
+				Game jeu = new Game(3);
+				dispose();
+			}
+		});
+		
+		// Affichage des menus
+		menuFichier.add(item1);
 		menuFichier.add(item2);
 		menuDifficulté.add(item3);
 		menuDifficulté.add(item4);
@@ -49,9 +79,8 @@ public class FenetreAvecMenu extends JFrame
 		menuBar.add(menuDifficulté);
 		menuBar.add(menuAide);
 		
-		setJMenuBar(menuBar);
-	
-		setVisible(true);
+		this.setJMenuBar(menuBar);
+		this.setVisible(true);
 				
 	}
 

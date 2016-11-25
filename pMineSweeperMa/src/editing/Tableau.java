@@ -1,11 +1,9 @@
 package editing;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 
 public class Tableau{
-	// changement tab en double
+	
 	
 	private int ligne;
 	private int colonne;
@@ -33,7 +31,7 @@ public class Tableau{
 		
 	}
 	
-	
+	// Ajout de bombe dans des cases aléatoires du tableau
 	public void Build()
 	{
 		jeu = new int [ligne][colonne];
@@ -99,7 +97,7 @@ public class Tableau{
 	}
 	
 
-	
+	// Génération des nombres de bombes adjaçantes aux cases
 	public void nbBombesAdjacants()
 	{
 		for(int i = 0; i < ligne; i++)
@@ -129,9 +127,7 @@ public class Tableau{
 							bombes++;
 						jeu[i][j] = bombes;
 					}
-					
 			}
-
 		}
 	}
 }
