@@ -31,22 +31,18 @@ public class Window extends JFrame {
 		this.setContentPane(pane);
 	    
 	    // Icone
-	    ImageIcon icone = new ImageIcon("src/editing/case.png");
+	    ImageIcon textureBloc = new ImageIcon("src/editing/case.png");
 	    
 	    ArrayList<ArrayList<JButton>> liste = new ArrayList<ArrayList<JButton>>();
 	    
 		// JButton
-		JButton bouton = new JButton("", icone);
-		JButton bouton2 = new JButton("", icone);
-
-		
 		for(int i = 0; i < 9; i++)
 		{
 			liste.add(new ArrayList<JButton>());
 			for(int j = 0; j < 9; j++)
 			{
 				
-				liste.get(i).add(new JButton("", icone));
+				liste.get(i).add(new JButton("", textureBloc));
 				((Component) liste.get(i).get(j)).setBounds(32*i, 32*j, 32, 32);
 				pane.add((Component) liste.get(i).get(j));
 			}
@@ -55,12 +51,14 @@ public class Window extends JFrame {
 	    this.setContentPane(pane);
 	    this.setVisible(true);
 		
-	    // Evenements
-/*	    bouton.addActionListener(new ActionListener()
-	    {
-	    	public void actionPerformed(ActionEvent e)
-	    	{
-	    		
-	    	}
-	    });*/	}
+	}
+	
+    // Evenements
+/*    bouton.addActionListener(new ActionListener()
+    {
+    	public void actionPerformed(ActionEvent e)
+    	{
+    		
+    	}
+    });*/
 }
