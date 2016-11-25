@@ -19,7 +19,7 @@ public class Window extends JFrame {
 	{
 		// JFrame
 		this.setTitle("Démineur");
-		this.setSize(400, 400);
+		this.setSize(288, 288);
 		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setResizable(false);
