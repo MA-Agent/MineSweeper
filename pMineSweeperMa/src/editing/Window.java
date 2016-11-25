@@ -2,6 +2,7 @@ package editing;
 
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -26,6 +27,7 @@ public class Window extends JFrame {
 		//
 		// JPanel
 		JPanel pane = new JPanel();
+		pane.setPreferredSize(new Dimension(288,288));
 		pane.setLayout(null);
 		pane.setBackground(Color.BLUE);
 		this.setContentPane(pane);
@@ -50,6 +52,7 @@ public class Window extends JFrame {
 		}	   
 	    
 	    this.setContentPane(pane);
+	    this.pack();
 	    this.setVisible(true);
 		
 	}
