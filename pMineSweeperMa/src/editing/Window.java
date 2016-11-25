@@ -23,7 +23,7 @@ public class Window extends JFrame {
 		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setResizable(false);
-		
+		//
 		// JPanel
 		JPanel pane = new JPanel();
 		pane.setLayout(null);
@@ -36,6 +36,7 @@ public class Window extends JFrame {
 	    ArrayList<ArrayList<JButton>> liste = new ArrayList<ArrayList<JButton>>();
 	    
 		// JButton
+	
 		for(int i = 0; i < 9; i++)
 		{
 			liste.add(new ArrayList<JButton>());
