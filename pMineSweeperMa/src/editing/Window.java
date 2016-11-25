@@ -25,7 +25,6 @@ public class Window extends JFrame {
 		pane.setPreferredSize(new Dimension(ligne*32, colonne*32));
 		pane.setLayout(null);
 		pane.setBackground(Color.BLUE);
-		this.setContentPane(pane);
 	    
 	    // Icone
 	    ImageIcon textureBloc = new ImageIcon("src/editing/case.png");
