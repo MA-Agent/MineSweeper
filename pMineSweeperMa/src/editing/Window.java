@@ -3,22 +3,25 @@ package editing;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-public class Window extends JFrame {
+public class Window extends JFrame implements ActionListener{
 
 	public Window(int ligne, int colonne)
 	{
 		// JFrame
-		this.setTitle("D�mineur");
+		this.setTitle("Démineur");
 		this.setSize(288, 288);
 		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setResizable(false);
+		JButton bouton;
 		//
 		// JPanel
 		JPanel pane = new JPanel();
@@ -38,8 +41,9 @@ public class Window extends JFrame {
 			liste.add(new ArrayList<JButton>());
 			for(int j = 0; j < colonne; j++)
 			{
-				
-				liste.get(i).add(new JButton("", textureBloc));
+				bouton = new JButton("", textureBloc);
+				bouton.addActionListener(this);
+				liste.get(i).add(bouton);
 				((Component) liste.get(i).get(j)).setBounds(32*i, 32*j, 32, 32);
 				pane.add((Component) liste.get(i).get(j));
 			}
@@ -52,12 +56,8 @@ public class Window extends JFrame {
 		
 	}
 	
-    // Evenements
-/*    bouton.addActionListener(new ActionListener()
-    {
-    	public void actionPerformed(ActionEvent e)
-    	{
-    		
-    	}
-    });*/
+	  public void actionPerformed(ActionEvent arg0) {      
+		  System.out.println("Bouton préssé " + arg0.getSource()); // Format + recuperer i & x
+		  
+	  }
 }
