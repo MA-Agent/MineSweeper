@@ -37,16 +37,16 @@ public class Window extends JFrame implements ActionListener{
 		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setResizable(false);
-		texturePressed = new ImageIcon("src/editing/0.png");
-		texturePressed1 = new ImageIcon("src/editing/1.png");
-		texturePressed2 = new ImageIcon("src/editing/2.png");
-		texturePressed3 = new ImageIcon("src/editing/3.png");
-		texturePressed4 = new ImageIcon("src/editing/4.png");
-		texturePressed5 = new ImageIcon("src/editing/5.png");
-		texturePressed6 = new ImageIcon("src/editing/6.png");
-		texturePressed7 = new ImageIcon("src/editing/7.png");
-		texturePressed8 = new ImageIcon("src/editing/8.png");
-		textureBomb = new ImageIcon("src/editing/bomb.png");
+		texturePressed = new ImageIcon("resources/0.png");
+		texturePressed1 = new ImageIcon("resources/1.png");
+		texturePressed2 = new ImageIcon("resources/2.png");
+		texturePressed3 = new ImageIcon("resources/3.png");
+		texturePressed4 = new ImageIcon("resources/4.png");
+		texturePressed5 = new ImageIcon("resources/5.png");
+		texturePressed6 = new ImageIcon("resources/6.png");
+		texturePressed7 = new ImageIcon("resources/7.png");
+		texturePressed8 = new ImageIcon("resources/8.png");
+		textureBomb = new ImageIcon("resources/bomb.png");
 		String s; // Format zerma pour le voila
 		JButton bouton;
 		//
@@ -57,7 +57,7 @@ public class Window extends JFrame implements ActionListener{
 		pane.setBackground(Color.BLUE);
 	    
 	    // Icone
-	    ImageIcon textureBloc = new ImageIcon("src/editing/case.png");
+	    ImageIcon textureBloc = new ImageIcon("resources/case.png");
 
 	    // Liste de liste boutons
 	    liste = new ArrayList<ArrayList<JButton>>();
