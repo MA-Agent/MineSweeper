@@ -86,11 +86,7 @@ public class Window extends JFrame implements ActionListener{
 		  int i = Integer.parseInt(e.getActionCommand().substring(0,2));
 		  System.out.println("i: " + i + " j: "+ j);
 		  
-		  
-		  Tableau
-		  
-		  
-		  
+
 		  
 		  liste.get(i).get(j).setIcon(texturePressed);
 		  liste.get(i).get(j).setEnabled(false);
