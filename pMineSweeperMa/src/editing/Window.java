@@ -21,6 +21,7 @@ public class Window extends JFrame implements ActionListener{
 		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setResizable(false);
+		String s; // Format zerma pour le voila
 		JButton bouton;
 		//
 		// JPanel
@@ -56,8 +57,8 @@ public class Window extends JFrame implements ActionListener{
 		
 	}
 	
-	  public void actionPerformed(ActionEvent arg0) {      
-		  System.out.println("Bouton préssé " + arg0.getSource()); // Format + recuperer i & x
+	  public void actionPerformed(ActionEvent e) {      
+		  System.out.println("Bouton préssé " + e.getActionCommand()); // Format + recuperer i & x
 		  
 	  }
 }
