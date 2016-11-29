@@ -130,6 +130,11 @@ public class Tableau{
 			}
 		}
 	}
+	
+	public int getNum(int a, int b)
+	{
+		return jeu[a][b];
+	}
 }
 	
 	

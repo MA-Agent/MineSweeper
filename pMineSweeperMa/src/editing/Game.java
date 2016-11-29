@@ -15,6 +15,6 @@ public class Game {
 		System.out.println(grille.toString());
 		
 		// Affichage de la fenêtre de jeu
-		Window fenetre = new Window(grille.getLigne(), grille.getColonne());
+		Window fenetre = new Window(grille.getLigne(), grille.getColonne(), grille);
 	}
 }

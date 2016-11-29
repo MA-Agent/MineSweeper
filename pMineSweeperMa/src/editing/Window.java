@@ -24,8 +24,13 @@ public class Window extends JFrame implements ActionListener{
 	    ImageIcon texturePressed7;
 	    ImageIcon texturePressed8;
 	    ImageIcon textureBomb;
-		public Window(int ligne, int colonne)
+	    Tableau grille;
+	    int pos, ligne, colonne;
+		public Window(int ligne, int colonne, Tableau grille)
 		{
+		this.grille = grille;
+		this.ligne = ligne;
+		this.colonne = colonne;
 		// JFrame
 		this.setTitle("Démineur");
 		this.setSize(288, 288);
@@ -86,9 +91,67 @@ public class Window extends JFrame implements ActionListener{
 		  int i = Integer.parseInt(e.getActionCommand().substring(0,2));
 		  System.out.println("i: " + i + " j: "+ j);
 		  
-
+		  pos = grille.getNum(j, i);
+		  switch(pos)
+		  {
+		  case 0: liste.get(i).get(j).setIcon(texturePressed);
+		  break;
+		  case 1: liste.get(i).get(j).setIcon(texturePressed1);
+		  break;
+		  case 2: liste.get(i).get(j).setIcon(texturePressed2);
+		  break;
+		  case 3: liste.get(i).get(j).setIcon(texturePressed3);
+		  break;
+		  case 4: liste.get(i).get(j).setIcon(texturePressed4);
+		  break;
+		  case 5: liste.get(i).get(j).setIcon(texturePressed5);
+		  break;
+		  case 6: liste.get(i).get(j).setIcon(texturePressed6);
+		  break;
+		  case 7: liste.get(i).get(j).setIcon(texturePressed7);
+		  break;
+		  case 8: liste.get(i).get(j).setIcon(texturePressed8);
+		  break;
+		  default: liste.get(i).get(j).setIcon(textureBomb);
+		  Lose();
 		  
-		  liste.get(i).get(j).setIcon(texturePressed);
-		  liste.get(i).get(j).setEnabled(false);
+		  }
+		  //liste.get(i).get(j).setIcon(texturePressed);
+		  liste.get(i).get(j).setEnabled(true);
+	  }
+	  
+	  private void Lose()
+	  {
+			for(int i = 0; i < ligne; i++)
+			{
+				for(int j = 0; j < colonne; j++)
+				{
+					  pos = grille.getNum(j, i);
+					  switch(pos)
+					  {
+					  case 0: liste.get(i).get(j).setIcon(texturePressed);
+					  break;
+					  case 1: liste.get(i).get(j).setIcon(texturePressed1);
+					  break;
+					  case 2: liste.get(i).get(j).setIcon(texturePressed2);
+					  break;
+					  case 3: liste.get(i).get(j).setIcon(texturePressed3);
+					  break;
+					  case 4: liste.get(i).get(j).setIcon(texturePressed4);
+					  break;
+					  case 5: liste.get(i).get(j).setIcon(texturePressed5);
+					  break;
+					  case 6: liste.get(i).get(j).setIcon(texturePressed6);
+					  break;
+					  case 7: liste.get(i).get(j).setIcon(texturePressed7);
+					  break;
+					  case 8: liste.get(i).get(j).setIcon(texturePressed8);
+					  break;
+					  default: liste.get(i).get(j).setIcon(textureBomb);
+					  
+					  }
+
+				}
+			}	   
 	  }
 }
