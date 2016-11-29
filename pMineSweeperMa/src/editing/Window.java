@@ -15,6 +15,15 @@ public class Window extends JFrame implements ActionListener{
 	
 		ArrayList<ArrayList<JButton>> liste;
 	    ImageIcon texturePressed;
+	    ImageIcon texturePressed1;
+	    ImageIcon texturePressed2;
+	    ImageIcon texturePressed3;
+	    ImageIcon texturePressed4;
+	    ImageIcon texturePressed5;
+	    ImageIcon texturePressed6;
+	    ImageIcon texturePressed7;
+	    ImageIcon texturePressed8;
+	    ImageIcon textureBomb;
 		public Window(int ligne, int colonne)
 		{
 		// JFrame
@@ -24,6 +33,15 @@ public class Window extends JFrame implements ActionListener{
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setResizable(false);
 		texturePressed = new ImageIcon("src/editing/0.png");
+		texturePressed1 = new ImageIcon("src/editing/1.png");
+		texturePressed2 = new ImageIcon("src/editing/2.png");
+		texturePressed3 = new ImageIcon("src/editing/3.png");
+		texturePressed4 = new ImageIcon("src/editing/4.png");
+		texturePressed5 = new ImageIcon("src/editing/5.png");
+		texturePressed6 = new ImageIcon("src/editing/6.png");
+		texturePressed7 = new ImageIcon("src/editing/7.png");
+		texturePressed8 = new ImageIcon("src/editing/8.png");
+		textureBomb = new ImageIcon("src/editing/bomb.png");
 		String s; // Format zerma pour le voila
 		JButton bouton;
 		//
@@ -67,6 +85,12 @@ public class Window extends JFrame implements ActionListener{
 		  int j = Integer.parseInt(e.getActionCommand().substring(2,4));
 		  int i = Integer.parseInt(e.getActionCommand().substring(0,2));
 		  System.out.println("i: " + i + " j: "+ j);
+		  
+		  
+		  Tableau
+		  
+		  
+		  
 		  
 		  liste.get(i).get(j).setIcon(texturePressed);
 		  liste.get(i).get(j).setEnabled(false);
