@@ -1,6 +1,5 @@
 package editing;
 
-import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
@@ -26,13 +25,16 @@ public class Window extends JFrame implements ActionListener{
 	    ImageIcon textureBomb;
 	    Tableau grille;
 	    int pos, ligne, colonne;
-		public Window(int ligne, int colonne, Tableau grille)
+	    
+		public Window(int colonne, int ligne, Tableau grille)
 		{
 		this.grille = grille;
-		this.ligne = ligne;
-		this.colonne = colonne;
+		this.ligne = colonne;
+		this.colonne = ligne;
+		String s;
+		JButton bouton;
 		// JFrame
-		this.setTitle("DÃ©mineur");
+		this.setTitle("Démineur");
 		this.setSize(288, 288);
 		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -47,14 +49,12 @@ public class Window extends JFrame implements ActionListener{
 		texturePressed7 = new ImageIcon("resources/7.png");
 		texturePressed8 = new ImageIcon("resources/8.png");
 		textureBomb = new ImageIcon("resources/bomb.png");
-		String s; // Format zerma pour le voila
-		JButton bouton;
-		//
+
+
 		// JPanel
 		JPanel pane = new JPanel();
 		pane.setPreferredSize(new Dimension(ligne*32, colonne*32));
 		pane.setLayout(null);
-		pane.setBackground(Color.BLUE);
 	    
 	    // Icone
 	    ImageIcon textureBloc = new ImageIcon("resources/case.png");
@@ -86,16 +86,39 @@ public class Window extends JFrame implements ActionListener{
 	}
 	
 	  public void actionPerformed(ActionEvent e) {      
-		  System.out.println("Bouton prÃ©ssÃ© " + e.getActionCommand()); // Format + recuperer i & x 
+		  System.out.println("Bouton préssé " + e.getActionCommand()); // TMP
 		  int j = Integer.parseInt(e.getActionCommand().substring(2,4));
 		  int i = Integer.parseInt(e.getActionCommand().substring(0,2));
-		  System.out.println("i: " + i + " j: "+ j);
-		  
+		  System.out.println("i: " + i + " j: "+ j); // TMP
 		  pos = grille.getNum(j, i);
+		  if(pos == -1)
+		  {
+			  lose();
+		  }
+		  else
+		  {
+			  changeIcon(pos, i, j);
+		  }
+	  }
+	  
+	  private void lose()
+	  {
+			for(int i = 0; i < ligne; i++)
+			{
+				for(int j = 0; j < colonne; j++)
+				{
+					  pos = grille.getNum(j, i);
+					  changeIcon(pos, i, j);
+
+				}
+			}	   
+	  }
+	  
+	  private void changeIcon(int pos, int i, int j)
+	  {
 		  switch(pos)
 		  {
 		  case 0: liste.get(i).get(j).setIcon(texturePressed);
-		  clearCaseAdj(i,j);
 		  break;
 		  case 1: liste.get(i).get(j).setIcon(texturePressed1);
 		  break;
@@ -113,16 +136,17 @@ public class Window extends JFrame implements ActionListener{
 		  break;
 		  case 8: liste.get(i).get(j).setIcon(texturePressed8);
 		  break;
-		  default: liste.get(i).get(j).setIcon(textureBomb);
-		  Lose();
-		  
+		  default: liste.get(i).get(j).setIcon(textureBomb);	
 		  }
-		  //liste.get(i).get(j).setIcon(texturePressed);
-		  liste.get(i).get(j).setEnabled(true);
 	  }
 	  
+	  // Le but de cette fonction est d'afficher les icones des cases adjacante a celle donnée en paramètre
+	  private void reveal()
+	  {
+		  
+	  }
 	  
-	  private void clearCaseAdj(int i,int j){
+private void clearCaseAdj(int i,int j){
 		  
 		  if(grille.getNum(i, j) == 0){
 			  if(i-1 >= 0 && j-1 >= 0 && grille.getNum(i-1,j-1) == 0){
@@ -168,44 +192,5 @@ public class Window extends JFrame implements ActionListener{
 
 		  }
 	  }
-		  
-	  
-	  
-	  
-	  
-	  
-	  private void Lose()
-	  {
-			for(int i = 0; i < ligne; i++)
-			{
-				for(int j = 0; j < colonne; j++)
-				{
-					  pos = grille.getNum(j, i);
-					  switch(pos)
-					  {
-					  case 0: liste.get(i).get(j).setIcon(texturePressed);
-					  break;
-					  case 1: liste.get(i).get(j).setIcon(texturePressed1);
-					  break;
-					  case 2: liste.get(i).get(j).setIcon(texturePressed2);
-					  break;
-					  case 3: liste.get(i).get(j).setIcon(texturePressed3);
-					  break;
-					  case 4: liste.get(i).get(j).setIcon(texturePressed4);
-					  break;
-					  case 5: liste.get(i).get(j).setIcon(texturePressed5);
-					  break;
-					  case 6: liste.get(i).get(j).setIcon(texturePressed6);
-					  break;
-					  case 7: liste.get(i).get(j).setIcon(texturePressed7);
-					  break;
-					  case 8: liste.get(i).get(j).setIcon(texturePressed8);
-					  break;
-					  default: liste.get(i).get(j).setIcon(textureBomb);
-					  
-					  }
 
-				}
-			}	   
-	  }
 }
