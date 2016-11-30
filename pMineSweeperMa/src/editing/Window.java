@@ -175,58 +175,58 @@ public class Window extends JFrame implements ActionListener{
 		}
 	}
 	private void clearCaseAdj(int i,int j){
-		int nb =0;
-		while(grille.getNum(i-nb, j-nb) == 0){
-			if(i-1 >= 0 && j-1 >= 0 && grille.getNum(i-1,j-1) >= 0){
-				changeIcon(grille.getNum(i-1,j-1), i-1, j-1);
 
-			}
 
-			if(j-1 >= 0 && grille.getNum(i,j-1) >= 0){
+		if(i-1 >= 0 && j-1 >= 0 && grille.getNum(i-1,j-1) >= 0){
+			changeIcon(grille.getNum(i-1,j-1), i-1, j-1);
 
-				changeIcon(grille.getNum(i,j-1), i, j-1);
-
-			}
-
-			if(i+1 < ligne && j-1 >= 0 && grille.getNum(i+1,j-1) >= 0){
-
-				changeIcon(grille.getNum(i+1,j-1), i+1, j-1);
-
-			}
-
-			if(i-1 >= 0 && grille.getNum(i-1,j) >= 0){
-
-				changeIcon(grille.getNum(i-1,j), i-1, j);
-
-			}
-
-			if(i+1 < ligne && grille.getNum(i+1,j) >= 0){
-
-				changeIcon(grille.getNum(i+1,j), i+1, j);
-
-			}
-
-			if(i-1 >= 0 && j+1 < colonne && grille.getNum(i-1,j+1) >= 0){
-
-				changeIcon(grille.getNum(i-1,j+1), i-1, j+1);
-
-			}
-
-			if(j+1 < colonne && grille.getNum(i,j+1) >= 0){
-
-				changeIcon(grille.getNum(i,j+1), i, j+1);
-
-			}
-
-			if(i+1 < ligne && j+1 < colonne && grille.getNum(i+1,j+1) >= 0){
-
-				changeIcon(grille.getNum(i+1,j+1), i+1, j+1);
-
-			}
-
-			
 		}
+
+		if(j-1 >= 0 && grille.getNum(i,j-1) >= 0){
+
+			changeIcon(grille.getNum(i,j-1), i, j-1);
+
+		}
+
+		if(i+1 < ligne && j-1 >= 0 && grille.getNum(i+1,j-1) >= 0){
+
+			changeIcon(grille.getNum(i+1,j-1), i+1, j-1);
+
+		}
+
+		if(i-1 >= 0 && grille.getNum(i-1,j) >= 0){
+
+			changeIcon(grille.getNum(i-1,j), i-1, j);
+
+		}
+
+		if(i+1 < ligne && grille.getNum(i+1,j) >= 0){
+
+			changeIcon(grille.getNum(i+1,j), i+1, j);
+
+		}
+
+		if(i-1 >= 0 && j+1 < colonne && grille.getNum(i-1,j+1) >= 0){
+
+			changeIcon(grille.getNum(i-1,j+1), i-1, j+1);
+
+		}
+
+		if(j+1 < colonne && grille.getNum(i,j+1) >= 0){
+
+			changeIcon(grille.getNum(i,j+1), i, j+1);
+
+		}
+
+		if(i+1 < ligne && j+1 < colonne && grille.getNum(i+1,j+1) >= 0){
+
+			changeIcon(grille.getNum(i+1,j+1), i+1, j+1);
+
+		}
+
+
 	}
+
 
 
 }
