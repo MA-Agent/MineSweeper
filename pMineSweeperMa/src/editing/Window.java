@@ -95,6 +95,7 @@ public class Window extends JFrame implements ActionListener{
 		  switch(pos)
 		  {
 		  case 0: liste.get(i).get(j).setIcon(texturePressed);
+		  clearCaseAdj(i,j);
 		  break;
 		  case 1: liste.get(i).get(j).setIcon(texturePressed1);
 		  break;
@@ -119,6 +120,59 @@ public class Window extends JFrame implements ActionListener{
 		  //liste.get(i).get(j).setIcon(texturePressed);
 		  liste.get(i).get(j).setEnabled(true);
 	  }
+	  
+	  
+	  private void clearCaseAdj(int i,int j){
+		  
+		  if(grille.getNum(i, j) == 0){
+			  if(i-1 >= 0 && j-1 >= 0 && grille.getNum(i-1,j-1) == 0){
+				  liste.get(i-1).get(j-1).setIcon(texturePressed);
+
+			  }
+
+			  if(j-1 >= 0 && grille.getNum(i,j-1) == 0){
+				  liste.get(i).get(j-1).setIcon(texturePressed);
+
+			  }
+
+			  if(i+1 < ligne && j-1 >= 0 && grille.getNum(i+1,j-1) == 0){
+				  liste.get(i+1).get(j-1).setIcon(texturePressed);
+
+			  }
+
+			  if(i-1 >= 0 && grille.getNum(i-1,j) == 0){
+				  liste.get(i-1).get(j).setIcon(texturePressed);
+
+			  }
+
+			  if(i+1 < ligne && grille.getNum(i+1,j) == 0){
+				  liste.get(i+1).get(j).setIcon(texturePressed);
+
+			  }
+
+			  if(i-1 >= 0 && j+1 < colonne && grille.getNum(i-1,j+1) == 0){
+				  liste.get(i-1).get(j+1).setIcon(texturePressed);
+
+			  }
+
+			  if(j+1 < colonne && grille.getNum(i,j+1) == 0){
+				  liste.get(i).get(j+1).setIcon(texturePressed);
+
+			  }
+
+			  if(i+1 < ligne && j+1 < colonne && grille.getNum(i+1,j+1) == 0){
+				  liste.get(i+1).get(j+1).setIcon(texturePressed);
+
+			  }
+
+
+		  }
+	  }
+		  
+	  
+	  
+	  
+	  
 	  
 	  private void Lose()
 	  {

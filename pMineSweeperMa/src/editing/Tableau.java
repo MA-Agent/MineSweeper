@@ -135,6 +135,8 @@ public class Tableau{
 	{
 		return jeu[a][b];
 	}
+	
+	
 }
 	
 	
