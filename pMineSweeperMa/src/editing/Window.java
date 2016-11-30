@@ -11,23 +11,23 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 public class Window extends JFrame implements ActionListener{
-	
-		ArrayList<ArrayList<JButton>> liste;
-	    ImageIcon texturePressed;
-	    ImageIcon texturePressed1;
-	    ImageIcon texturePressed2;
-	    ImageIcon texturePressed3;
-	    ImageIcon texturePressed4;
-	    ImageIcon texturePressed5;
-	    ImageIcon texturePressed6;
-	    ImageIcon texturePressed7;
-	    ImageIcon texturePressed8;
-	    ImageIcon textureBomb;
-	    Tableau grille;
-	    int pos, ligne, colonne;
-	    
-		public Window(int colonne, int ligne, Tableau grille)
-		{
+
+	ArrayList<ArrayList<JButton>> liste;
+	ImageIcon texturePressed;
+	ImageIcon texturePressed1;
+	ImageIcon texturePressed2;
+	ImageIcon texturePressed3;
+	ImageIcon texturePressed4;
+	ImageIcon texturePressed5;
+	ImageIcon texturePressed6;
+	ImageIcon texturePressed7;
+	ImageIcon texturePressed8;
+	ImageIcon textureBomb;
+	Tableau grille;
+	int pos, ligne, colonne;
+
+	public Window(int colonne, int ligne, Tableau grille)
+	{
 		this.grille = grille;
 		this.ligne = colonne;
 		this.colonne = ligne;
@@ -55,13 +55,13 @@ public class Window extends JFrame implements ActionListener{
 		JPanel pane = new JPanel();
 		pane.setPreferredSize(new Dimension(ligne*32, colonne*32));
 		pane.setLayout(null);
-	    
-	    // Icone
-	    ImageIcon textureBloc = new ImageIcon("resources/case.png");
 
-	    // Liste de liste boutons
-	    liste = new ArrayList<ArrayList<JButton>>();
-	    
+		// Icone
+		ImageIcon textureBloc = new ImageIcon("resources/case.png");
+
+		// Liste de liste boutons
+		liste = new ArrayList<ArrayList<JButton>>();
+
 		// Ajout d'autant de bouton qu'il faut de ligne et de colonne sous forme de liste de liste.
 		for(int i = 0; i < ligne; i++)
 		{
@@ -77,120 +77,156 @@ public class Window extends JFrame implements ActionListener{
 				pane.add((Component) liste.get(i).get(j));
 			}
 		}	   
-	    
+
 		// Ajout du JPanel dans la JFrame
-	    this.setContentPane(pane);
-	    this.pack();
-	    this.setVisible(true);
-		
+		this.setContentPane(pane);
+		this.pack();
+		this.setVisible(true);
+
 	}
-	
-	  public void actionPerformed(ActionEvent e) {      
-		  System.out.println("Bouton préssé " + e.getActionCommand()); // TMP
-		  int j = Integer.parseInt(e.getActionCommand().substring(2,4));
-		  int i = Integer.parseInt(e.getActionCommand().substring(0,2));
-		  System.out.println("i: " + i + " j: "+ j); // TMP
-		  pos = grille.getNum(j, i);
-		  if(pos == -1)
-		  {
-			  lose();
-		  }
-		  else
-		  {
-			  changeIcon(pos, i, j);
-		  }
-	  }
-	  
-	  private void lose()
-	  {
-			for(int i = 0; i < ligne; i++)
+
+	public void actionPerformed(ActionEvent e) {      
+		System.out.println("Bouton préssé " + e.getActionCommand()); // TMP
+		int j = Integer.parseInt(e.getActionCommand().substring(2,4));
+		int i = Integer.parseInt(e.getActionCommand().substring(0,2));
+		System.out.println("i: " + i + " j: "+ j); // TMP
+		pos = grille.getNum(j, i);
+		if(pos == -1)
+		{
+			lose();
+		}
+		else
+		{
+			changeIcon(pos, i, j);
+			changeIconClear(pos, i, j);
+		}
+	}
+
+	private void lose()
+	{
+		for(int i = 0; i < ligne; i++)
+		{
+			for(int j = 0; j < colonne; j++)
 			{
-				for(int j = 0; j < colonne; j++)
-				{
-					  pos = grille.getNum(j, i);
-					  changeIcon(pos, i, j);
+				pos = grille.getNum(j, i);
+				changeIcon(pos, i, j);
 
-				}
-			}	   
-	  }
-	  
-	  private void changeIcon(int pos, int i, int j)
-	  {
-		  switch(pos)
-		  {
-		  case 0: liste.get(i).get(j).setIcon(texturePressed);
-		  break;
-		  case 1: liste.get(i).get(j).setIcon(texturePressed1);
-		  break;
-		  case 2: liste.get(i).get(j).setIcon(texturePressed2);
-		  break;
-		  case 3: liste.get(i).get(j).setIcon(texturePressed3);
-		  break;
-		  case 4: liste.get(i).get(j).setIcon(texturePressed4);
-		  break;
-		  case 5: liste.get(i).get(j).setIcon(texturePressed5);
-		  break;
-		  case 6: liste.get(i).get(j).setIcon(texturePressed6);
-		  break;
-		  case 7: liste.get(i).get(j).setIcon(texturePressed7);
-		  break;
-		  case 8: liste.get(i).get(j).setIcon(texturePressed8);
-		  break;
-		  default: liste.get(i).get(j).setIcon(textureBomb);	
-		  }
-	  }
-	  
-	  // Le but de cette fonction est d'afficher les icones des cases adjacante a celle donnée en paramètre
-	  private void reveal()
-	  {
-		  
-	  }
-	  
-private void clearCaseAdj(int i,int j){
-		  
-		  if(grille.getNum(i, j) == 0){
-			  if(i-1 >= 0 && j-1 >= 0 && grille.getNum(i-1,j-1) == 0){
-				  liste.get(i-1).get(j-1).setIcon(texturePressed);
+			}
+		}	   
+	}
 
-			  }
+	private void changeIcon(int pos, int i, int j)
+	{
+		switch(pos)
+		{
+		case 0: liste.get(i).get(j).setIcon(texturePressed);
+		break;
 
-			  if(j-1 >= 0 && grille.getNum(i,j-1) == 0){
-				  liste.get(i).get(j-1).setIcon(texturePressed);
+		case 1: liste.get(i).get(j).setIcon(texturePressed1);
+		break;
+		case 2: liste.get(i).get(j).setIcon(texturePressed2);
+		break;
+		case 3: liste.get(i).get(j).setIcon(texturePressed3);
+		break;
+		case 4: liste.get(i).get(j).setIcon(texturePressed4);
+		break;
+		case 5: liste.get(i).get(j).setIcon(texturePressed5);
+		break;
+		case 6: liste.get(i).get(j).setIcon(texturePressed6);
+		break;
+		case 7: liste.get(i).get(j).setIcon(texturePressed7);
+		break;
+		case 8: liste.get(i).get(j).setIcon(texturePressed8);
+		break;
+		default: liste.get(i).get(j).setIcon(textureBomb);	
+		}
+	}
 
-			  }
+	// Le but de cette fonction est d'afficher les icones des cases adjacante a celle donnée en paramètre
+	private void reveal()
+	{
 
-			  if(i+1 < ligne && j-1 >= 0 && grille.getNum(i+1,j-1) == 0){
-				  liste.get(i+1).get(j-1).setIcon(texturePressed);
+	}
 
-			  }
+	private void changeIconClear(int pos, int i, int j)
+	{
+		switch(pos)
+		{
+		case 0: liste.get(i).get(j).setIcon(texturePressed);
+		clearCaseAdj(i, j);
+		break;
+		case 1: liste.get(i).get(j).setIcon(texturePressed1);
+		break;
+		case 2: liste.get(i).get(j).setIcon(texturePressed2);
+		break;
+		case 3: liste.get(i).get(j).setIcon(texturePressed3);
+		break;
+		case 4: liste.get(i).get(j).setIcon(texturePressed4);
+		break;
+		case 5: liste.get(i).get(j).setIcon(texturePressed5);
+		break;
+		case 6: liste.get(i).get(j).setIcon(texturePressed6);
+		break;
+		case 7: liste.get(i).get(j).setIcon(texturePressed7);
+		break;
+		case 8: liste.get(i).get(j).setIcon(texturePressed8);
+		break;
+		default: liste.get(i).get(j).setIcon(textureBomb);	
+		}
+	}
+	private void clearCaseAdj(int i,int j){
+		int nb =0;
+		while(grille.getNum(i-nb, j-nb) == 0){
+			if(i-1 >= 0 && j-1 >= 0 && grille.getNum(i-1,j-1) >= 0){
+				changeIcon(grille.getNum(i-1,j-1), i-1, j-1);
 
-			  if(i-1 >= 0 && grille.getNum(i-1,j) == 0){
-				  liste.get(i-1).get(j).setIcon(texturePressed);
+			}
 
-			  }
+			if(j-1 >= 0 && grille.getNum(i,j-1) >= 0){
 
-			  if(i+1 < ligne && grille.getNum(i+1,j) == 0){
-				  liste.get(i+1).get(j).setIcon(texturePressed);
+				changeIcon(grille.getNum(i,j-1), i, j-1);
 
-			  }
+			}
 
-			  if(i-1 >= 0 && j+1 < colonne && grille.getNum(i-1,j+1) == 0){
-				  liste.get(i-1).get(j+1).setIcon(texturePressed);
+			if(i+1 < ligne && j-1 >= 0 && grille.getNum(i+1,j-1) >= 0){
 
-			  }
+				changeIcon(grille.getNum(i+1,j-1), i+1, j-1);
 
-			  if(j+1 < colonne && grille.getNum(i,j+1) == 0){
-				  liste.get(i).get(j+1).setIcon(texturePressed);
+			}
 
-			  }
+			if(i-1 >= 0 && grille.getNum(i-1,j) >= 0){
 
-			  if(i+1 < ligne && j+1 < colonne && grille.getNum(i+1,j+1) == 0){
-				  liste.get(i+1).get(j+1).setIcon(texturePressed);
+				changeIcon(grille.getNum(i-1,j), i-1, j);
 
-			  }
+			}
 
+			if(i+1 < ligne && grille.getNum(i+1,j) >= 0){
 
-		  }
-	  }
+				changeIcon(grille.getNum(i+1,j), i+1, j);
+
+			}
+
+			if(i-1 >= 0 && j+1 < colonne && grille.getNum(i-1,j+1) >= 0){
+
+				changeIcon(grille.getNum(i-1,j+1), i-1, j+1);
+
+			}
+
+			if(j+1 < colonne && grille.getNum(i,j+1) >= 0){
+
+				changeIcon(grille.getNum(i,j+1), i, j+1);
+
+			}
+
+			if(i+1 < ligne && j+1 < colonne && grille.getNum(i+1,j+1) >= 0){
+
+				changeIcon(grille.getNum(i+1,j+1), i+1, j+1);
+
+			}
+
+			
+		}
+	}
+
 
 }
