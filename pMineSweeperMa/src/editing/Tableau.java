@@ -53,7 +53,7 @@ public class Tableau{
 			
 			if(jeu[randL][randC] == 0)
 			{
-				jeu[randL][randC] = -1;
+				jeu[randL][randC] = 9;
 			}
 			else
 			{
@@ -107,23 +107,23 @@ public class Tableau{
 			{
 
 					int bombes = 0;
-					if(jeu[i][j] != -1)
+					if(jeu[i][j] != 9)
 					{
-						if(i-1 >= 0 && j-1 >= 0 && jeu[i-1][j-1] == -1)
+						if(i-1 >= 0 && j-1 >= 0 && jeu[i-1][j-1] == 9)
 							bombes++;
-						if(j-1 >= 0 && jeu[i][j-1] == -1)
+						if(j-1 >= 0 && jeu[i][j-1] == 9)
 							bombes++;
-						if(i+1 < ligne && j-1 >= 0 && jeu[i+1][j-1] == -1)
+						if(i+1 < ligne && j-1 >= 0 && jeu[i+1][j-1] == 9)
 							bombes++;
-						if(i-1 >= 0 && jeu[i-1][j] == -1)
+						if(i-1 >= 0 && jeu[i-1][j] == 9)
 							bombes++;
-						if(i+1 < ligne && jeu[i+1][j] == -1)
+						if(i+1 < ligne && jeu[i+1][j] == 9)
 							bombes++;
-						if(i-1 >= 0 && j+1 < colonne && jeu[i-1][j+1] == -1)
+						if(i-1 >= 0 && j+1 < colonne && jeu[i-1][j+1] == 9)
 							bombes++;
-						if(j+1 < colonne && jeu[i][j+1] == -1)
+						if(j+1 < colonne && jeu[i][j+1] == 9)
 							bombes++;
-						if(i+1 < ligne && j+1 < colonne && jeu[i+1][j+1] == -1)
+						if(i+1 < ligne && j+1 < colonne && jeu[i+1][j+1] == 9)
 							bombes++;
 						jeu[i][j] = bombes;
 					}

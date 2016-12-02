@@ -26,7 +26,7 @@ public class Window extends JFrame implements ActionListener{
 	Tableau grille;
 	int pos, ligne, colonne;
 
-	public Window(int colonne, int ligne, Tableau grille)
+	public Window(int ligne, int colonne, Tableau grille)
 	{
 		this.grille = grille;
 		this.ligne = ligne;
@@ -53,7 +53,7 @@ public class Window extends JFrame implements ActionListener{
 
 		// JPanel
 		JPanel pane = new JPanel();
-		pane.setPreferredSize(new Dimension(ligne*32, colonne*32));
+		pane.setPreferredSize(new Dimension(colonne*32, ligne*32));
 		pane.setLayout(null);
 
 		// Icone
@@ -91,7 +91,7 @@ public class Window extends JFrame implements ActionListener{
 		int j = Integer.parseInt(e.getActionCommand().substring(2,4));
 		System.out.println("i: " + i + " j: "+ j); // TMP
 		pos = grille.getNum(i, j);
-		if(pos == -1)
+		if(pos == 9)
 		{
 			lose();
 		}
@@ -116,11 +116,14 @@ public class Window extends JFrame implements ActionListener{
 
 	private void changeIcon(int pos, int i, int j)
 	{
-		switch(pos)
+
+
+		switch((pos < 0)? Math.abs(pos)-1 : pos)
 		{
+		case 9: liste.get(i).get(j).setIcon(textureBomb);
+		break;
 		case 0: liste.get(i).get(j).setIcon(texturePressed);
 		break;
-
 		case 1: liste.get(i).get(j).setIcon(texturePressed1);
 		break;
 		case 2: liste.get(i).get(j).setIcon(texturePressed2);
@@ -137,7 +140,7 @@ public class Window extends JFrame implements ActionListener{
 		break;
 		case 8: liste.get(i).get(j).setIcon(texturePressed8);
 		break;
-		default: liste.get(i).get(j).setIcon(textureBomb);	
+		default: liste.get(i).get(j).setIcon(texturePressed);	
 		}
 	}
 
@@ -145,11 +148,11 @@ public class Window extends JFrame implements ActionListener{
 	private void reveal(int i, int j)
 	{
 		pos = grille.getNum(i, j);
-		if(pos != -2)
+		if(pos >= 0)
 		{
 
 			changeIcon(pos, i, j);
-			grille.setNum(i, j, -2);
+			grille.setNum(i, j, (-1*pos) -1);
 			if(pos == 0)
 			{
 				if(i-1 >= 0 && j-1 >= 0)
@@ -188,86 +191,5 @@ public class Window extends JFrame implements ActionListener{
 			} 
 		}
 	}
-
-	private void changeIconClear(int pos, int i, int j)
-	{
-		switch(pos)
-		{
-		case 0: liste.get(i).get(j).setIcon(texturePressed);
-		clearCaseAdj(i, j);
-		break;
-		case 1: liste.get(i).get(j).setIcon(texturePressed1);
-		break;
-		case 2: liste.get(i).get(j).setIcon(texturePressed2);
-		break;
-		case 3: liste.get(i).get(j).setIcon(texturePressed3);
-		break;
-		case 4: liste.get(i).get(j).setIcon(texturePressed4);
-		break;
-		case 5: liste.get(i).get(j).setIcon(texturePressed5);
-		break;
-		case 6: liste.get(i).get(j).setIcon(texturePressed6);
-		break;
-		case 7: liste.get(i).get(j).setIcon(texturePressed7);
-		break;
-		case 8: liste.get(i).get(j).setIcon(texturePressed8);
-		break;
-		default: liste.get(i).get(j).setIcon(textureBomb);	
-		}
-	}
-	private void clearCaseAdj(int i,int j){
-
-
-		if(i-1 >= 0 && j-1 >= 0 && grille.getNum(i-1,j-1) >= 0){
-			changeIcon(grille.getNum(i-1,j-1), i-1, j-1);
-
-		}
-
-		if(j-1 >= 0 && grille.getNum(i,j-1) >= 0){
-
-			changeIcon(grille.getNum(i,j-1), i, j-1);
-
-		}
-
-		if(i+1 < ligne && j-1 >= 0 && grille.getNum(i+1,j-1) >= 0){
-
-			changeIcon(grille.getNum(i+1,j-1), i+1, j-1);
-
-		}
-
-		if(i-1 >= 0 && grille.getNum(i-1,j) >= 0){
-
-			changeIcon(grille.getNum(i-1,j), i-1, j);
-
-		}
-
-		if(i+1 < ligne && grille.getNum(i+1,j) >= 0){
-
-			changeIcon(grille.getNum(i+1,j), i+1, j);
-
-		}
-
-		if(i-1 >= 0 && j+1 < colonne && grille.getNum(i-1,j+1) >= 0){
-
-			changeIcon(grille.getNum(i-1,j+1), i-1, j+1);
-
-		}
-
-		if(j+1 < colonne && grille.getNum(i,j+1) >= 0){
-
-			changeIcon(grille.getNum(i,j+1), i, j+1);
-
-		}
-
-		if(i+1 < ligne && j+1 < colonne && grille.getNum(i+1,j+1) >= 0){
-
-			changeIcon(grille.getNum(i+1,j+1), i+1, j+1);
-
-		}
-
-
-	}
-
-
 
 }
