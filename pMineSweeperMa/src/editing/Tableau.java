@@ -24,8 +24,8 @@ public class Tableau{
 			this.nbBomb = 40;
 			
 		}else if(difficulty == 3 ){
-			this.ligne = 30;
-			this.colonne = 16;
+			this.ligne = 16;
+			this.colonne = 30;
 			this.nbBomb = 99;
 		}
 		

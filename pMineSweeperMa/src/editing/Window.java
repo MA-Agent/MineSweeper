@@ -29,8 +29,8 @@ public class Window extends JFrame implements ActionListener{
 	public Window(int colonne, int ligne, Tableau grille)
 	{
 		this.grille = grille;
-		this.ligne = colonne;
-		this.colonne = ligne;
+		this.ligne = ligne;
+		this.colonne = colonne;
 		String s;
 		JButton bouton;
 		// JFrame
@@ -73,7 +73,7 @@ public class Window extends JFrame implements ActionListener{
 				bouton.addActionListener(this);
 				bouton.setActionCommand(s);
 				liste.get(i).add(bouton);
-				((Component) liste.get(i).get(j)).setBounds(32*i, 32*j, 32, 32);
+				((Component) liste.get(i).get(j)).setBounds(32*j, 32*i, 32, 32);
 				pane.add((Component) liste.get(i).get(j));
 			}
 		}	   
@@ -87,10 +87,10 @@ public class Window extends JFrame implements ActionListener{
 
 	public void actionPerformed(ActionEvent e) {      
 		System.out.println("Bouton préssé " + e.getActionCommand()); // TMP
-		int j = Integer.parseInt(e.getActionCommand().substring(2,4));
 		int i = Integer.parseInt(e.getActionCommand().substring(0,2));
+		int j = Integer.parseInt(e.getActionCommand().substring(2,4));
 		System.out.println("i: " + i + " j: "+ j); // TMP
-		pos = grille.getNum(j, i);
+		pos = grille.getNum(i, j);
 		if(pos == -1)
 		{
 			lose();
@@ -108,7 +108,7 @@ public class Window extends JFrame implements ActionListener{
 		{
 			for(int j = 0; j < colonne; j++)
 			{
-				pos = grille.getNum(j, i);
+				pos = grille.getNum(i, j);
 				changeIcon(pos, i, j);
 
 			}
