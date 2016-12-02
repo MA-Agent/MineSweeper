@@ -136,6 +136,11 @@ public class Tableau{
 		return jeu[a][b];
 	}
 	
+	public void setNum(int a, int b, int pos)
+	{
+		jeu[a][b] = pos;
+	}
+	
 	
 }
 	

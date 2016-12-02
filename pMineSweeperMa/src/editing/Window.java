@@ -97,8 +97,7 @@ public class Window extends JFrame implements ActionListener{
 		}
 		else
 		{
-			changeIcon(pos, i, j);
-			changeIconClear(pos, i, j);
+			reveal(i, j);
 		}
 	}
 
@@ -143,9 +142,51 @@ public class Window extends JFrame implements ActionListener{
 	}
 
 	// Le but de cette fonction est d'afficher les icones des cases adjacante a celle donnée en paramètre
-	private void reveal()
+	private void reveal(int i, int j)
 	{
+		pos = grille.getNum(i, j);
+		if(pos != -2)
+		{
 
+			changeIcon(pos, i, j);
+			grille.setNum(i, j, -2);
+			if(pos == 0)
+			{
+				if(i-1 >= 0 && j-1 >= 0)
+				{
+					reveal(i-1, j-1);
+
+				}
+				if(i-1 >= 0)
+				{
+					reveal(i-1, j);
+				}
+				if(j-1 >= 0)
+				{
+					reveal(i, j-1);
+				}
+				if(j+1 < colonne)
+				{
+					reveal(i, j+1);
+				}
+				if(i+1 < ligne)
+				{
+					reveal(i+1, j);
+				}
+				if(i+1 < ligne && j+1 < colonne)
+				{
+					reveal(i+1, j+1);
+				}
+				if(i+1 < ligne && j-1 >= 0)
+				{
+					reveal(i+1, j-1);
+				}
+				if(i-1 >= 0 && j+1 < colonne)
+				{
+					reveal(i-1, j+1);
+				}
+			} 
+		}
 	}
 
 	private void changeIconClear(int pos, int i, int j)
