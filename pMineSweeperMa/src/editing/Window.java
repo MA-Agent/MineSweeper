@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class Window extends JFrame implements ActionListener{
@@ -23,22 +24,28 @@ public class Window extends JFrame implements ActionListener{
 	ImageIcon texturePressed7;
 	ImageIcon texturePressed8;
 	ImageIcon textureBomb;
+	ImageIcon textureBloc;
 	Tableau grille;
 	int pos, ligne, colonne;
+	JLabel score;
+	JPanel pane;
 
 	public Window(int ligne, int colonne, Tableau grille)
 	{
 		this.grille = grille;
 		this.ligne = ligne;
 		this.colonne = colonne;
-		String s;
+		String s; // ActionCommand
 		JButton bouton;
+		
 		// JFrame
 		this.setTitle("Démineur");
-		this.setSize(288, 288);
+		this.setSize(colonne*32, 20+ligne*32);
 		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setResizable(false);
+		
+		// Textures des boutons
 		texturePressed = new ImageIcon("resources/0.png");
 		texturePressed1 = new ImageIcon("resources/1.png");
 		texturePressed2 = new ImageIcon("resources/2.png");
@@ -49,15 +56,18 @@ public class Window extends JFrame implements ActionListener{
 		texturePressed7 = new ImageIcon("resources/7.png");
 		texturePressed8 = new ImageIcon("resources/8.png");
 		textureBomb = new ImageIcon("resources/bomb.png");
-
+		textureBloc = new ImageIcon("resources/case.png");
 
 		// JPanel
-		JPanel pane = new JPanel();
-		pane.setPreferredSize(new Dimension(colonne*32, ligne*32));
+		pane = new JPanel();
+		pane.setPreferredSize(new Dimension(colonne*32, 20+ligne*32));
 		pane.setLayout(null);
+		
+		// JLabel
+		score = new JLabel("Nombre de bombes restantes: ");
+		score.setBounds(0,0,50,25);
+		pane.add(score);
 
-		// Icone
-		ImageIcon textureBloc = new ImageIcon("resources/case.png");
 
 		// Liste de liste boutons
 		liste = new ArrayList<ArrayList<JButton>>();
@@ -73,7 +83,7 @@ public class Window extends JFrame implements ActionListener{
 				bouton.addActionListener(this);
 				bouton.setActionCommand(s);
 				liste.get(i).add(bouton);
-				((Component) liste.get(i).get(j)).setBounds(32*j, 32*i, 32, 32);
+				((Component) liste.get(i).get(j)).setBounds(32*j, 20+32*i, 32, 32);
 				pane.add((Component) liste.get(i).get(j));
 			}
 		}	   
@@ -109,9 +119,9 @@ public class Window extends JFrame implements ActionListener{
 			{
 				pos = grille.getNum(i, j);
 				changeIcon(pos, i, j);
-
 			}
-		}	   
+		}
+		
 	}
 
 	private void changeIcon(int pos, int i, int j)
